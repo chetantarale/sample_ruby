@@ -15,6 +15,5 @@ rvm:
   - ree
 
 build:
-  - ci:
-    - bundle install
-    - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+  pre_ci:
+    bundle install
