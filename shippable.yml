@@ -17,4 +17,4 @@ rvm:
 build:
   - ci:
     - bundle install
-  - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+    - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
