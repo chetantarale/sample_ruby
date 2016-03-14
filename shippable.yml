@@ -15,4 +15,5 @@ build:
     options: --privileged=true
   ci:    
     - mkdir -p ~/.aws   
+    - psql -c 'create database myapp_test;' -U root
     - bundle install
