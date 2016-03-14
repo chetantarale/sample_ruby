@@ -1,8 +1,14 @@
 # language setting
 language: ruby
 
+# build and process only release branches
+branches:
+  only:
+    - master
+    
 rvm:
   - 2.2.4
+  
 services:
     - postgres
     
@@ -10,7 +16,7 @@ env:
   global:
     - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
     - USER=postgres
-
+    
 build:
   pre_ci_boot:
     image_name: drydock/u14rubpls
@@ -18,6 +24,11 @@ build:
     pull: true
     options: --privileged=true
   ci:    
+    - mkdir -p $CI_REPORTS
+    - mkdir -p $COVERAGE_REPORTS
     - mkdir -p ~/.aws   
-    - psql -c 'create database myapp_test;' -U postgres
+    - psql -c 'create database myapp_test;' -U $USER
     - bundle install
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:schema:load RAILS_ENV=test
+    - bundle exec rake test
