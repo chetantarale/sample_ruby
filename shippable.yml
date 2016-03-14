@@ -8,5 +8,4 @@ rvm:
 build:
   ci:
     make
-    bundle install
     
