@@ -5,6 +5,11 @@ rvm:
   - 2.2.4
 services:
     - postgres
+    
+env:
+  global:
+    - CI_REPORTS=shippable/testresults COVERAGE_REPORTS=shippable/codecoverage
+    - USER=postgres
 
 build:
   pre_ci_boot:
