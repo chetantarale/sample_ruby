@@ -1,11 +1,22 @@
+# language setting
 language: ruby
 
 rvm:
-  - 1.8.7
-  - 1.9.2
-  - 1.9.3
+  - 2.2.4
+services:
+    - postgres
 
 build:
-  ci:
-    bundle install
-    
+  pre_ci_boot:
+    image_name: drydock/u14rubpls
+    image_tag: prod
+    pull: true
+    options: --privileged=true
+  ci:    
+    - mkdir -p $CI_REPORTS
+    - mkdir -p $COVERAGE_REPORTS
+    - mkdir -p ~/.aws   
+    - psql -c 'create database myapp_test;' -U $USER
+    - bundle install
+    - bundle exec rake db:create RAILS_ENV=test
+    - bundle exec rake db:schema:load RAILS_ENV=test
