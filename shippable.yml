@@ -2,6 +2,7 @@
 language: ruby
 
 rvm:
+  - 1.9.2
   - 2.2.4
 services:
     - postgres
@@ -14,5 +15,4 @@ build:
     options: --privileged=true
   ci:    
     - mkdir -p ~/.aws   
-    - psql -c 'create database myapp_test;' -U $USER
     - bundle install
