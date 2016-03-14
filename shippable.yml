@@ -7,4 +7,4 @@ rvm:
 
 build:
   ci:
-    bundle install --local
+    bundle install
