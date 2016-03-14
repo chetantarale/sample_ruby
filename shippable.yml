@@ -29,6 +29,3 @@ build:
     - mkdir -p ~/.aws   
     - psql -c 'create database myapp_test;' -U $USER
     - bundle install
-    - bundle exec rake db:create RAILS_ENV=test
-    - bundle exec rake db:schema:load RAILS_ENV=test
-    - bundle exec rake test
