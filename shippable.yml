@@ -23,7 +23,9 @@ build:
     image_tag: prod
     pull: true
     options: --privileged=true
-  ci:    
+  ci:
+    - ruby -v
+    - gem --version
     - mkdir -p $CI_REPORTS
     - mkdir -p $COVERAGE_REPORTS
     - mkdir -p ~/.aws   
