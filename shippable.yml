@@ -5,4 +5,5 @@ rvm:
 build: 
   ci:
     - cat .rvmrc
+    - rvm ls
     - bundle install
