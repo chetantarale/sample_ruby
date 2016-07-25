@@ -20,7 +20,7 @@ env:
 build:
   cache: true
   cache_dir_list:
-     - /usr/local/rvm/gems/ruby-2.2.1/gems
+     - usr/local/rvm/gems/ruby-2.2.1/gems
      
   pre_ci_boot:
     image_name: drydock/u14rubpls
